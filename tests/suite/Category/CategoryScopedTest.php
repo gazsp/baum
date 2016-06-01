@@ -266,6 +266,19 @@ class CategoryScopedTest extends CategoryTestCase
         $this->assertArraysAreEqual($expectedWhole2, hmap(OrderedScopedCategory::where('company_id', 2)->get()->toHierarchy()->toArray()));
     }
 
+    public function testScopedNodesGetCommonAncestor()
+    {
+        $root1 = $this->categories('Root 1', 'MultiScopedCategory');
+
+        $child1 = $this->categories('Child 1', 'MultiScopedCategory');
+        $child2 = $this->categories('Child 2', 'MultiScopedCategory');
+
+        $hijo = $this->categories('Hijo 1', 'MultiScopedCategory');
+
+        $this->assertEquals($root1, $child1->getCommonAncestor($child2));
+        $this->assertNull($child1->getCommonAncestor($hijo));
+    }
+
   /**
    * @expectedException Baum\MoveNotPossibleException
    */

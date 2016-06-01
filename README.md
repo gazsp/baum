@@ -399,6 +399,8 @@ remember to call `get()` or `first()`.
 * `descendantsAndSelf()`: Scope targeting itself and all of its nested children.
 * `descendants()`: Set of all children & nested children.
 * `immediateDescendants()`: Set of all children nodes (non-recursive).
+* `nodesOnPathAndSelf($other)`: Scope targeting all nodes on the path between `$this` and `$other`, including self
+* `nodesOnPath($other)`: Scope targeting all nodes on the path between `$this` and `$other`, without self
 
 Second, as **methods** which return actual `Baum\Node` instances (inside a `Collection`
 object where appropiate):
@@ -414,6 +416,9 @@ object where appropiate):
 * `getDescendantsAndSelf()`: Retrieve all nested children and self.
 * `getDescendants()`: Retrieve all of its children & nested children.
 * `getImmediateDescendants()`: Retrieve all of its children nodes (non-recursive).
+* `getCommonAncestor($other)`: Retrieve the common ancestor of `$this` and `$other`
+* `getNodesOnPathAndSelf($other)`: Retrieve all nodes on the path between `$this` and `$other`, including self. Note that the ordering of the nodes is *not necessarily* the order that would be encountered when traversing from `$this` to `$other`
+* `getNodesOnPath($other)`: Retrieve all nodes on the path between `$this` and `$other`, without self. Note that the ordering of the nodes is *not necessarily* the order that would be encountered when traversing from `$this` to `$other`
 
 Here's a simple example for iterating a node's descendants (provided a name
 attribute is available):
