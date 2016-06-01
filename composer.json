@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.5.9",
     "illuminate/console": "5.2.*",
-    "illuminate/database": "5.2.*@dev",
+    "illuminate/database": "5.2.*",
     "illuminate/events": "5.2.*",
     "illuminate/filesystem": "5.2.*",
     "illuminate/support": "5.2.*"

@@ -801,6 +801,122 @@ abstract class Node extends Model
     }
 
     /**
+     * Scope targeting the nodes on the path between this and other, with self
+     *
+     * @param Node $other
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function nodesOnPathAndSelf(Node $other)
+    {
+        // Determine if this is a direct parent of other or vice-versa
+        if ($this->isSelfOrAncestorOf($other) || $other->isSelfOrAncestorOf($this)) {
+            $parent = $this;
+            $child = $other;
+            if ($other->isSelfOrAncestorOf($this)) {
+                $parent = $other;
+                $child = $this;
+            }
+            return $parent->descendantsAndSelf()
+                ->where($parent->getLeftColumnName(), '<=', $child->getLeft())
+                ->where($parent->getRightColumnName(), '>=', $child->getRight());
+        } else {
+            // If not direct parent, determine direct parent
+            $ancestor = $this->getCommonAncestor($other);
+            if (is_null($ancestor)) {
+                // No common ancestor return a query with no result set.
+                return $this->query()->where(2, 3);
+            }
+            return $ancestor->descendantsAndSelf()
+                ->where(function($query) use ($other) {
+                    $query->where(function($query) {
+                            // Constrain to descendants on path to child 1
+                            $query->where($this->getLeftColumnName(), '<=', $this->getLeft())
+                                  ->where($this->getRightColumnName(), '>=', $this->getRight());
+                            })
+                        ->orWhere(function($query) use ($other) {
+                            // Constrain to descendants on path to child 2
+                            $query->where($other->getLeftColumnName(), '<=', $other->getLeft())
+                                  ->where($other->getRightColumnName(), '>=', $other->getRight());
+                        });
+
+                });
+        }
+    }
+
+    /**
+     * Scope targeting the nodes on the path between this and other, without self
+     *
+     * @param Node $other
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function nodesOnPath(Node $other)
+    {
+        // NOTE: We use withoutNode() here in place of withoutSelf() because NodesOnPathAndSelf()
+        // returns a query with the common ancestor of this and other as the root, breaking
+        // the functionality of the withoutSelf() query scope.
+        return $this->nodesOnPathAndSelf($other)->withoutNode($this);
+    }
+
+    /**
+     * Get the nodes on the path between this and other, with self
+     *
+     * @param Node $other
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getNodesOnPathAndSelf(Node $other, $columns = ['*'])
+    {
+        return $this->nodesOnPathAndSelf($other)->get($columns);
+    }
+
+    /**
+     * Get the nodes on the path between this and other, without self
+     *
+     * @param Node $other
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getNodesOnPath(Node $other, $columns = ['*'])
+    {
+        return $this->nodesOnPath($other)->get($columns);
+    }
+
+    /**
+     * Get the node which is the common ancestor of this and other
+     *
+     * @param Node $other
+     * @return Node|null
+     */
+    public function getCommonAncestor(Node $other, $columns = ['*'])
+    {
+        if (!$this->inSameScope($other)) {
+            return null;
+        }
+
+        if ($this->isSelfOrAncestorOf($other)) {
+            // Trivial, this is direct ancestor of other
+            return $this;
+        } elseif ($other->isSelfOrAncestorOf($this)) {
+            // Trivial, other is direct ancestor of this
+            return $other;
+        } else {
+            // Determine left boundary
+            $leastLeft = min($this->getLeft(), $other->getLeft());
+            // Determine right boundary
+            $greatestRight = max($this->getRight(), $other->getRight());
+            // The least upper bound is the node which is greater than the boundaries
+            // and has the greatest depth
+            return $this->newQuery()
+                        ->where($this->getLeftColumnName(), '<', $leastLeft)
+                        ->where($this->getRightColumnName(), '>', $greatestRight)
+                        ->orderBy($this->getDepthColumnName(), 'desc')
+                        ->take(1)
+                        ->get($columns)
+                        ->first();
+        }
+    }
+
+    /**
     * Retrieve all other nodes at the same depth,
     *
     * @return \Illuminate\Database\Eloquent\Collection
