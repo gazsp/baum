@@ -330,6 +330,7 @@ You can ask some questions to your Baum nodes:
 * `isRoot()`: Returns true if this is a root node.
 * `isLeaf()`: Returns true if this is a leaf node (end of a branch).
 * `isChild()`: Returns true if this is a child node.
+* `isChildOf($other)`: Returns true if this node is a child of the other.
 * `isDescendantOf($other)`: Returns true if node is a descendant of the other.
 * `isSelfOrDescendantOf($other)`: Returns true if node is self or a descendant.
 * `isAncestorOf($other)`: Returns true if node is an ancestor of the other.
