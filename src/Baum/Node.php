@@ -1265,7 +1265,10 @@ abstract class Node extends Model
             $self->newNestedSetQuery()->where($lftCol, '>=', $lft)->select($self->getKeyName())->lockForUpdate()->get();
 
             // Prune children
-            $self->newNestedSetQuery()->where($lftCol, '>', $lft)->where($rgtCol, '<', $rgt)->delete();
+            $subNodes = $self->newNestedSetQuery()->where($lftCol, '>', $lft)->where($rgtCol, '<', $rgt)->get();
+            foreach($subNodes as $subNode) {
+                $subNode->delete();
+            }
 
             // Update left and right indexes for the remaining nodes
             $diff = $rgt - $lft + 1;

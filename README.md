@@ -276,8 +276,7 @@ $child1->delete();
 ```
 
 Descendants of deleted nodes will also be deleted and all the `lft` and `rgt`
-bound will be recalculated. Pleases note that, for now, `deleting` and `deleted`
-model events for the descendants will not be fired.
+bound will be recalculated. events `deleting` and `deleted` will also be fired.
 
 <a name="node-level"></a>
 ### Getting the nesting level of a node
