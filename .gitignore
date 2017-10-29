@@ -1,4 +1,9 @@
 /vendor
 /build
+/.idea
+/.vagrant
+.DS_Store
+Homestead.json
+Homestead.yaml
 composer.lock
 *.cache
