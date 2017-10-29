@@ -91,7 +91,7 @@ class SetBuilder
   /**
    * Return all children for the specified node.
    *
-   * @param   Baum\Node $node
+   * @param \Baum\Node $node
    *
    * @return  Illuminate\Database\Eloquent\Collection
    */
@@ -117,7 +117,7 @@ class SetBuilder
   /**
    * Return an array of the scoped attributes of the supplied node.
    *
-   * @param   Baum\Node $node
+   * @param \Baum\Node $node
    *
    * @return  array
    */
@@ -140,7 +140,7 @@ class SetBuilder
    * Return a string-key for the current scoped attributes. Used for index
    * computing when a scope is defined (acsts as an scope identifier).
    *
-   * @param   Baum\Node $node
+   * @param \Baum\Node $node
    *
    * @return  string
    */

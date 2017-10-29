@@ -12,7 +12,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testMoveLeftRaisesAnExceptionWhenNotPossible()
     {
@@ -58,7 +58,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testMoveToLeftOfRaisesAnExceptionWhenNotPossible()
     {
@@ -99,7 +99,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testMoveRightRaisesAnExceptionWhenNotPossible()
     {
@@ -147,7 +147,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testMoveToRightOfRaisesAnExceptionWhenNotPossible()
     {
@@ -462,7 +462,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testUnpersistedNodeCannotBeMoved()
     {
@@ -472,7 +472,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testUnpersistedNodeCannotBeMadeChild()
     {
@@ -482,7 +482,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testNodesCannotBeMovedToItself()
     {
@@ -492,7 +492,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testNodesCannotBeMadeChildOfThemselves()
     {
@@ -502,7 +502,7 @@ class CategoryMovementTest extends CategoryTestCase
     }
 
     /**
-     * @expectedException Baum\MoveNotPossibleException
+     * @expectedException \Baum\MoveNotPossibleException
      */
     public function testNodesCannotBeMovedToDescendantsOfThemselves()
     {

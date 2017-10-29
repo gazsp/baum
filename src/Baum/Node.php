@@ -354,7 +354,7 @@ abstract class Node extends Model
     /**
      * Get a new "scoped" query builder for the Node's model.
      *
-     * @return \Illuminate\Database\Eloquent\Builder|static
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function newNestedSetQuery()
     {
@@ -372,7 +372,7 @@ abstract class Node extends Model
     /**
      * Overload new Collection.
      *
-     * @param array $models
+     * @param  array $models
      *
      * @return \Baum\Extensions\Eloquent\Collection
      */
@@ -384,7 +384,7 @@ abstract class Node extends Model
     /**
      * Get all of the nodes from the database.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
@@ -400,7 +400,7 @@ abstract class Node extends Model
     /**
      * Returns the first root node.
      *
-     * @return NestedSet
+     * @return \Baum\Node|null
      */
     public static function root()
     {
@@ -488,7 +488,7 @@ abstract class Node extends Model
     /**
      * Maps the provided tree structure into the database.
      *
-     * @param   array|\Illuminate\Support\Contracts\ArrayableInterface
+     * @param  array|\Illuminate\Support\Contracts\ArrayableInterface
      *
      * @return bool
      */
@@ -532,8 +532,8 @@ abstract class Node extends Model
     /**
      * Provides a depth level limit for the query.
      *
-     * @param   query   \Illuminate\Database\Query\Builder
-     * @param   limit   integer
+     * @param  \Illuminate\Database\Query\Builder $query
+     * @param  int                                $limit
      *
      * @return \Illuminate\Database\Query\Builder
      */
@@ -589,7 +589,7 @@ abstract class Node extends Model
     /**
      * Returns the root node starting at the current node.
      *
-     * @return NestedSet
+     * @return \Baum\Node|null
      */
     public function getRoot()
     {
@@ -622,7 +622,7 @@ abstract class Node extends Model
     /**
      * Get all the ancestor chain from the database including the current node.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -635,7 +635,7 @@ abstract class Node extends Model
      * Get all the ancestor chain from the database including the current node
      * but without the root node.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -658,7 +658,7 @@ abstract class Node extends Model
     /**
      * Get all the ancestor chain from the database excluding the current node.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -671,7 +671,7 @@ abstract class Node extends Model
      * Get all the ancestor chain from the database excluding the current node
      * and the root node (from the current node's perspective).
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -694,7 +694,7 @@ abstract class Node extends Model
     /**
      * Get all children of the parent, including self.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -716,7 +716,7 @@ abstract class Node extends Model
     /**
      * Return all children of the parent, except self.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -745,7 +745,7 @@ abstract class Node extends Model
     /**
      * Return all of its nested children which do not have children.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -775,7 +775,7 @@ abstract class Node extends Model
     /**
      * Return all of its nested children which are trunks.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -799,7 +799,7 @@ abstract class Node extends Model
     /**
      * Retrieve all nested children an self.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -841,7 +841,7 @@ abstract class Node extends Model
     /**
      * Retrieve all of its children & nested children.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -872,7 +872,7 @@ abstract class Node extends Model
     /**
      * Retrive all of its "immediate" descendants.
      *
-     * @param array $columns
+     * @param  array $columns
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -899,7 +899,8 @@ abstract class Node extends Model
     /**
     * Returns true if node is a direct descendant of $other.
     *
-    * @param NestedSet
+    * @param  \Baum\Node
+    *
     * @return bool
     */
     public function isChildOf($other)
@@ -913,7 +914,7 @@ abstract class Node extends Model
     /**
      * Returns true if node is a descendant.
      *
-     * @param NestedSet
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -928,7 +929,7 @@ abstract class Node extends Model
     /**
      * Returns true if node is self or a descendant.
      *
-     * @param NestedSet
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -943,7 +944,7 @@ abstract class Node extends Model
     /**
      * Returns true if node is an ancestor.
      *
-     * @param NestedSet
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -958,7 +959,7 @@ abstract class Node extends Model
     /**
      * Returns true if node is self or an ancestor.
      *
-     * @param NestedSet
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -973,7 +974,7 @@ abstract class Node extends Model
     /**
      * Returns the first sibling to the left.
      *
-     * @return NestedSet
+     * @return \Baum\Node|null
      */
     public function getLeftSibling()
     {
@@ -987,7 +988,7 @@ abstract class Node extends Model
     /**
      * Returns the first sibling to the right.
      *
-     * @return NestedSet
+     * @return \Baum\Node|null
      */
     public function getRightSibling()
     {
@@ -1113,7 +1114,7 @@ abstract class Node extends Model
     /**
      * Equals?
      *
-     * @param \Baum\Node
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -1125,7 +1126,7 @@ abstract class Node extends Model
     /**
      * Checkes if the given node is in the same scope as the current one.
      *
-     * @param \Baum\Node
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -1144,7 +1145,7 @@ abstract class Node extends Model
      * Checks wether the given node is a descendant of itself. Basically, whether
      * its in the subtree defined by the left and right indices.
      *
-     * @param \Baum\Node
+     * @param  \Baum\Node
      *
      * @return bool
      */
@@ -1392,8 +1393,8 @@ abstract class Node extends Model
      * Main move method. Here we handle all node movements with the corresponding
      * lft/rgt index updates.
      *
-     * @param Baum\Node|int $target
-     * @param string        $position
+     * @param  \Baum\Node|int $target
+     * @param  string         $position
      *
      * @return \Baum\Node
      */
@@ -1423,8 +1424,8 @@ abstract class Node extends Model
     /**
      * Return an array with the last node we could reach and its nesting level.
      *
-     * @param Baum\Node $node
-     * @param int       $nesting
+     * @param  \Baum\Node $node
+     * @param  int        $nesting
      *
      * @return array
      */

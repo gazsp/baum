@@ -10,7 +10,7 @@ use Illuminate\Events\Dispatcher;
 class Move
 {
 
-    /**
+   /**
    * Node on which the move operation will be performed.
    *
    * @var \Baum\Node
@@ -62,11 +62,11 @@ class Move
   /**
    * Create a new Move class instance.
    *
-   * @param   \Baum\Node      $node
-   * @param   \Baum\Node|int  $target
-   * @param   string          $position
+   * @param  \Baum\Node     $node
+   * @param  \Baum\Node|int $target
+   * @param  string         $position
    *
-   * @return  void
+   * @return void
    */
     public function __construct($node, $target, $position)
     {
@@ -80,9 +80,9 @@ class Move
   /**
    * Easy static accessor for performing a move operation.
    *
-   * @param   \Baum\Node      $node
-   * @param   \Baum\Node|int  $target
-   * @param   string          $position
+   * @param  \Baum\Node     $node
+   * @param  \Baum\Node|int $target
+   * @param  string         $position
    *
    * @return \Baum\Node
    */
@@ -191,13 +191,13 @@ class Move
    * supplied parameter is an instance of \Baum\Node. Otherwise it will try
    * to find the node in the database.
    *
-   * @param   \Baum\node|int
+   * @param  \Baum\node|int
    *
-   * @return  \Baum\Node
+   * @return \Baum\Node
    */
     protected function resolveNode($node)
     {
-        if ($node instanceof \Baum\Node) {
+        if ($node instanceof Node) {
             return $node->reload();
         }
 
@@ -328,13 +328,13 @@ class Move
   /**
    * Computes the new parent id for the node being moved.
    *
-   * @return int
+   * @return mixed
    */
     protected function parentId()
     {
         switch ($this->position) {
             case 'root':
-                return;
+                return null;
 
             case 'child':
                 return $this->target->getKey();
@@ -412,7 +412,7 @@ class Move
   /**
    * Quotes an identifier for being used in a database query.
    *
-   * @param mixed $value
+   * @param  mixed $value
    *
    * @return string
    */
@@ -432,10 +432,10 @@ class Move
   /**
    * Applies a lock to the rows between the supplied index boundaries.
    *
-   * @param   int   $lft
-   * @param   int   $rgt
+   * @param  int   $lft
+   * @param  int   $rgt
    *
-   * @return  void
+   * @return void
    */
     protected function applyLockBetween($lft, $rgt)
     {

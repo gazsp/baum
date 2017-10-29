@@ -267,7 +267,7 @@ class CategoryScopedTest extends CategoryTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotMoveBetweenScopes()
     {
@@ -278,7 +278,7 @@ class CategoryScopedTest extends CategoryTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotMoveBetweenScopesMultiple()
     {
@@ -289,7 +289,7 @@ class CategoryScopedTest extends CategoryTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotMoveBetweenScopesMultiple2()
     {

@@ -49,7 +49,7 @@ class BaumServiceProvider extends ServiceProvider
    */
     protected function registerBaumCommand()
     {
-        $this->app->singleton('command.baum', function ($app) {
+        $this->app->singleton('command.baum', function () {
             return new BaumCommand();
         });
     }

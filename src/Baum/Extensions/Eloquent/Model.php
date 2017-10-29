@@ -51,25 +51,25 @@ abstract class Model extends BaseModel
   /**
    * Register a moving model event with the dispatcher.
    *
-   * @param  Closure|string  $callback
+   * @param  \Closure|string $callback
    *
    * @return void
    */
     public static function moving($callback, $priority = 0)
     {
-        static::registerModelEvent('moving', $callback, $priority);
+        static::registerModelEvent('moving', $callback);
     }
 
-  /**
-   * Register a moved model event with the dispatcher.
-   *
-   * @param  Closure|string  $callback
-   *
-   * @return void
-   */
+    /**
+     * Register a moved model event with the dispatcher.
+     *
+     * @param  \Closure|string $callback
+     *
+     * @return void
+     */
     public static function moved($callback, $priority = 0)
     {
-        static::registerModelEvent('moved', $callback, $priority);
+        static::registerModelEvent('moved', $callback);
     }
 
   /**

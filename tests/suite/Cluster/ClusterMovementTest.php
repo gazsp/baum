@@ -14,7 +14,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testMoveLeftRaisesAnExceptionWhenNotPossible()
     {
@@ -62,7 +62,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testMoveToLeftOfRaisesAnExceptionWhenNotPossible()
     {
@@ -107,7 +107,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testMoveRightRaisesAnExceptionWhenNotPossible()
     {
@@ -155,7 +155,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testMoveToRightOfRaisesAnExceptionWhenNotPossible()
     {
@@ -472,7 +472,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testUnpersistedNodeCannotBeMoved()
     {
@@ -482,7 +482,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testUnpersistedNodeCannotBeMadeChild()
     {
@@ -492,7 +492,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotBeMovedToItself()
     {
@@ -502,7 +502,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotBeMadeChildOfThemselves()
     {
@@ -512,7 +512,7 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
     public function testNodesCannotBeMovedToDescendantsOfThemselves()
     {

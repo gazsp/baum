@@ -49,9 +49,9 @@ abstract class Generator
   /**
    * Get the given stub by name.
    *
-   * @param  string  $table
+   * @param  string $name
    *
-   * @return void
+   * @return string
    */
     protected function getStub($name)
     {
@@ -65,8 +65,8 @@ abstract class Generator
   /**
    * Parse the provided stub and replace via the array given.
    *
-   * @param string $stub
-   * @param string $replacements
+   * @param  string $stub
+   * @param  string $replacements
    *
    * @return string
    */
@@ -85,7 +85,7 @@ abstract class Generator
   /**
    * Inflect to a class name.
    *
-   * @param string $input
+   * @param  string $input
    *
    * @return string
    */
@@ -97,7 +97,7 @@ abstract class Generator
   /**
    * Inflect to table name.
    *
-   * @param string $input
+   * @param  string $input
    *
    * @return string
    */

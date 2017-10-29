@@ -27,14 +27,14 @@ class InstallCommand extends Command
   /**
    * Migration generator instance.
    *
-   * @var Baum\Generators\MigrationGenerator
+   * @var \Baum\Generators\MigrationGenerator
    */
     protected $migrator;
 
   /**
    * Model generator instance.
    *
-   * @var Baum\Generators\ModelGenerator
+   * @var \Baum\Generators\ModelGenerator
    */
     protected $modeler;
 
@@ -83,9 +83,9 @@ class InstallCommand extends Command
   /**
    * Write the migration file to disk.
    *
-   * @param  string  $name
+   * @param  string $name
    *
-   * @return string
+   * @return void
    */
     protected function writeMigration($name)
     {
@@ -96,9 +96,9 @@ class InstallCommand extends Command
   /**
    * Write the model file to disk.
    *
-   * @param  string  $name
+   * @param  string $name
    *
-   * @return string
+   * @return void
    */
     protected function writeModel($name)
     {

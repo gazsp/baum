@@ -231,7 +231,7 @@ class SetValidator
    * Builds a single string for the given scope columns values. Useful for
    * making array keys for grouping.
    *
-   * @param Baum\Node   $node
+   * @param \Baum\Node $node
    *
    * @return string
    */
