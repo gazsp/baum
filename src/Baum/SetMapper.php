@@ -7,6 +7,7 @@ use Illuminate\Support\Contracts\ArrayableInterface;
 
 class SetMapper
 {
+
     /**
      * Node instance for reference.
      *

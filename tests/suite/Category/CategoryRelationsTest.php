@@ -98,7 +98,7 @@ class CategoryRelationsTest extends CategoryTestCase
         $this->assertEquals($expected, $children);
 
     // Swap 2 nodes & re-test
-    Category::query()->where('id', '=', 2)->update(['lft' => 8, 'rgt' => 9]);
+        Category::query()->where('id', '=', 2)->update(['lft' => 8, 'rgt' => 9]);
         Category::query()->where('id', '=', 5)->update(['lft' => 2, 'rgt' => 3]);
 
         $children = $this->categories('Root 1')->children()->get()->all();

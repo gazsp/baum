@@ -18,6 +18,7 @@ use Baum\Extensions\Eloquent\Model;
  */
 abstract class Node extends Model
 {
+
     /**
      * Column name to store the reference to parent's node.
      *
@@ -1163,7 +1164,8 @@ abstract class Node extends Model
      */
     public function setDefaultLeftAndRight()
     {
-        $withHighestRight = $this->newNestedSetQuery()->reOrderBy($this->getRightColumnName(), 'desc')->take(1)->sharedLock()->first();
+        $withHighestRight =
+            $this->newNestedSetQuery()->reOrderBy($this->getRightColumnName(), 'desc')->take(1)->sharedLock()->first();
 
         $maxRgt = 0;
         if (!is_null($withHighestRight)) {
@@ -1217,7 +1219,12 @@ abstract class Node extends Model
         $this->getConnection()->transaction(function () use ($self) {
             $self->reload();
             $level = $self->getLevel();
-            $self->newNestedSetQuery()->where($self->getKeyName(), '=', $self->getKey())->update([$self->getDepthColumnName() => $level]);
+
+            $self
+                ->newNestedSetQuery()
+                ->where($self->getKeyName(), '=', $self->getKey())
+                ->update([$self->getDepthColumnName() => $level]);
+
             $self->setAttribute($self->getDepthColumnName(), $level);
         });
 
@@ -1241,7 +1248,11 @@ abstract class Node extends Model
             $oldDepth = !is_null($self->getDepth()) ? $self->getDepth() : 0;
             $newDepth = $self->getLevel();
 
-            $self->newNestedSetQuery()->where($self->getKeyName(), '=', $self->getKey())->update([$self->getDepthColumnName() => $newDepth]);
+            $self
+                ->newNestedSetQuery()
+                ->where($self->getKeyName(), '=', $self->getKey())
+                ->update([$self->getDepthColumnName() => $newDepth]);
+
             $self->setAttribute($self->getDepthColumnName(), $newDepth);
 
             $diff = $newDepth - $oldDepth;
@@ -1357,7 +1368,7 @@ abstract class Node extends Model
         return array_combine(array_map(function ($node) use ($key) {
             return $node[$key];
         }, $nodes), array_map(function ($node) use ($seperator, $depthColumn, $column, $symbol) {
-            return str_repeat($seperator, $node[$depthColumn]) . $symbol . $node[$column];
+            return str_repeat($seperator, $node[$depthColumn]).$symbol.$node[$column];
         }, $nodes));
     }
 

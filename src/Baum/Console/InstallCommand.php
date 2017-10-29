@@ -9,46 +9,47 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class InstallCommand extends Command
 {
+
     /**
    * The console command name.
    *
    * @var string
    */
-  protected $name = 'baum:install';
+    protected $name = 'baum:install';
 
   /**
    * The console command description.
    *
    * @var string
    */
-  protected $description = 'Scaffolds a new migration and model suitable for Baum.';
+    protected $description = 'Scaffolds a new migration and model suitable for Baum.';
 
   /**
    * Migration generator instance.
    *
    * @var Baum\Generators\MigrationGenerator
    */
-  protected $migrator;
+    protected $migrator;
 
   /**
    * Model generator instance.
    *
    * @var Baum\Generators\ModelGenerator
    */
-  protected $modeler;
+    protected $modeler;
 
   /**
    * Create a new command instance.
    *
    * @return void
    */
-  public function __construct(MigrationGenerator $migrator, ModelGenerator $modeler)
-  {
-      parent::__construct();
+    public function __construct(MigrationGenerator $migrator, ModelGenerator $modeler)
+    {
+        parent::__construct();
 
-      $this->migrator = $migrator;
-      $this->modeler = $modeler;
-  }
+        $this->migrator = $migrator;
+        $this->modeler = $modeler;
+    }
 
   /**
    * Execute the console command.
@@ -60,24 +61,24 @@ class InstallCommand extends Command
    *
    * @return void
    */
-  public function fire()
-  {
-      $name = $this->input->getArgument('name');
-      $this->writeMigration($name);
-      $this->writeModel($name);
-  }
+    public function fire()
+    {
+        $name = $this->input->getArgument('name');
+        $this->writeMigration($name);
+        $this->writeModel($name);
+    }
 
   /**
    * Get the command arguments.
    *
    * @return array
    */
-  protected function getArguments()
-  {
-      return [
+    protected function getArguments()
+    {
+        return [
         ['name', InputArgument::REQUIRED, 'Name to use for the scaffolding of the migration and model.'],
-      ];
-  }
+        ];
+    }
 
   /**
    * Write the migration file to disk.
@@ -86,11 +87,11 @@ class InstallCommand extends Command
    *
    * @return string
    */
-  protected function writeMigration($name)
-  {
-      $output = pathinfo($this->migrator->create($name, $this->getMigrationsPath()), PATHINFO_FILENAME);
-      $this->line("      <fg=green;options=bold>create</fg=green;options=bold>  $output");
-  }
+    protected function writeMigration($name)
+    {
+        $output = pathinfo($this->migrator->create($name, $this->getMigrationsPath()), PATHINFO_FILENAME);
+        $this->line("      <fg=green;options=bold>create</fg=green;options=bold>  $output");
+    }
 
   /**
    * Write the model file to disk.
@@ -99,29 +100,29 @@ class InstallCommand extends Command
    *
    * @return string
    */
-  protected function writeModel($name)
-  {
-      $output = pathinfo($this->modeler->create($name, $this->getModelsPath()), PATHINFO_FILENAME);
-      $this->line("      <fg=green;options=bold>create</fg=green;options=bold>  $output");
-  }
+    protected function writeModel($name)
+    {
+        $output = pathinfo($this->modeler->create($name, $this->getModelsPath()), PATHINFO_FILENAME);
+        $this->line("      <fg=green;options=bold>create</fg=green;options=bold>  $output");
+    }
 
   /**
    * Get the path to the migrations directory.
    *
    * @return string
    */
-  protected function getMigrationsPath()
-  {
-      return $this->laravel->databasePath();
-  }
+    protected function getMigrationsPath()
+    {
+        return $this->laravel->databasePath();
+    }
 
   /**
    * Get the path to the models directory.
    *
    * @return string
    */
-  protected function getModelsPath()
-  {
-      return $this->laravel->basePath();
-  }
+    protected function getModelsPath()
+    {
+        return $this->laravel->basePath();
+    }
 }

@@ -14,16 +14,16 @@ class Builder extends BaseBuilder
    *
    * @return \Illuminate\Database\Query\Builder|static
    */
-  public function reOrderBy($column, $direction = 'asc')
-  {
-      $this->orders = null;
+    public function reOrderBy($column, $direction = 'asc')
+    {
+        $this->orders = null;
 
-      if (!is_null($column)) {
-          return $this->orderBy($column, $direction);
-      }
+        if (!is_null($column)) {
+            return $this->orderBy($column, $direction);
+        }
 
-      return $this;
-  }
+        return $this;
+    }
 
   /**
    * Execute an aggregate function on the database.
@@ -33,13 +33,13 @@ class Builder extends BaseBuilder
    *
    * @return mixed
    */
-  public function aggregate($function, $columns = ['*'])
-  {
-      // Postgres doesn't like ORDER BY when there's no GROUP BY clause
-    if (!isset($this->groups)) {
-        $this->reOrderBy(null);
-    }
+    public function aggregate($function, $columns = ['*'])
+    {
+        // Postgres doesn't like ORDER BY when there's no GROUP BY clause
+        if (!isset($this->groups)) {
+            $this->reOrderBy(null);
+        }
 
-      return parent::aggregate($function, $columns);
-  }
+        return parent::aggregate($function, $columns);
+    }
 }

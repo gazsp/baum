@@ -68,9 +68,9 @@ class CategoryTreeRebuildingTest extends CategoryTestCase
         $this->assertEquals($root->getAttributes(), $this->categories('A', 'MultiScopedCategory')->getAttributes());
 
     // Compare attributes, not objects
-    $expected = array_map(function ($item) {
-        return $item->getAttributes();
-    }, [$child1, $child2]);
+        $expected = array_map(function ($item) {
+            return $item->getAttributes();
+        }, [$child1, $child2]);
 
         $children = $this->categories('A', 'MultiScopedCategory')->children()->get()->all();
         $children = array_map(function ($item) {
