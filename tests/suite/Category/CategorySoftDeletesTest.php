@@ -37,9 +37,9 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
     }
 
@@ -52,10 +52,10 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 2', 'SoftCategory'),
-      $this->categories('Child 2.1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 2', 'SoftCategory'),
+        $this->categories('Child 2.1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
 
         $this->assertEquals(1, $this->categories('Root 1', 'SoftCategory')->getLeft());
@@ -80,9 +80,9 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
 
         $this->assertEquals(1, $this->categories('Root 1', 'SoftCategory')->getLeft());
@@ -138,11 +138,11 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 2', 'SoftCategory'),
-      $this->categories('Child 2.1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 2', 'SoftCategory'),
+        $this->categories('Child 2.1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
     }
 
@@ -159,11 +159,11 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 2', 'SoftCategory'),
-      $this->categories('Child 2.1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 2', 'SoftCategory'),
+        $this->categories('Child 2.1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
 
         $this->assertEquals(1, $this->categories('Root 1', 'SoftCategory')->getLeft());
@@ -194,11 +194,11 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 2', 'SoftCategory'),
-      $this->categories('Child 2.1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 2', 'SoftCategory'),
+        $this->categories('Child 2.1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
 
         $this->assertEquals(1, $this->categories('Root 1', 'SoftCategory')->getLeft());
@@ -229,11 +229,11 @@ class CategorySoftDeletesTest extends CategoryTestCase
         $this->assertTrue(SoftCategory::isValidNestedSet());
 
         $expected = [
-      $this->categories('Child 1', 'SoftCategory'),
-      $this->categories('Child 2', 'SoftCategory'),
-      $this->categories('Child 2.1', 'SoftCategory'),
-      $this->categories('Child 3', 'SoftCategory'),
-    ];
+        $this->categories('Child 1', 'SoftCategory'),
+        $this->categories('Child 2', 'SoftCategory'),
+        $this->categories('Child 2.1', 'SoftCategory'),
+        $this->categories('Child 3', 'SoftCategory'),
+        ];
         $this->assertEquals($expected, $this->categories('Root 1', 'SoftCategory')->getDescendants()->all());
 
         $this->assertEquals(1, $this->categories('Root 1', 'SoftCategory')->getLeft());

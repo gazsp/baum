@@ -12,19 +12,19 @@ class ModelGenerator extends Generator
    *
    * @return string
    */
-  public function create($name, $path)
-  {
-      $path = $this->getPath($name, $path);
+    public function create($name, $path)
+    {
+        $path = $this->getPath($name, $path);
 
-      $stub = $this->getStub('model');
+        $stub = $this->getStub('model');
 
-      $this->files->put($path, $this->parseStub($stub, [
-      'table' => $this->tableize($name),
-      'class' => $this->classify($name),
-    ]));
+        $this->files->put($path, $this->parseStub($stub, [
+        'table' => $this->tableize($name),
+        'class' => $this->classify($name),
+        ]));
 
-      return $path;
-  }
+        return $path;
+    }
 
   /**
    * Get the full path name to the migration.
@@ -34,8 +34,8 @@ class ModelGenerator extends Generator
    *
    * @return string
    */
-  protected function getPath($name, $path)
-  {
-      return $path.'/'.$this->classify($name).'.php';
-  }
+    protected function getPath($name, $path)
+    {
+        return $path.'/'.$this->classify($name).'.php';
+    }
 }

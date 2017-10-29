@@ -14,15 +14,15 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testMoveLeftRaisesAnExceptionWhenNotPossible()
-  {
-      $node = $this->clusters('Child 2');
+    public function testMoveLeftRaisesAnExceptionWhenNotPossible()
+    {
+        $node = $this->clusters('Child 2');
 
-      $node->moveLeft();
-      $node->moveLeft();
-  }
+        $node->moveLeft();
+        $node->moveLeft();
+    }
 
     public function testMoveLeftDoesNotChangeDepth()
     {
@@ -62,12 +62,12 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testMoveToLeftOfRaisesAnExceptionWhenNotPossible()
-  {
-      $this->clusters('Child 1')->moveToLeftOf($this->clusters('Child 1')->getLeftSibling());
-  }
+    public function testMoveToLeftOfRaisesAnExceptionWhenNotPossible()
+    {
+        $this->clusters('Child 1')->moveToLeftOf($this->clusters('Child 1')->getLeftSibling());
+    }
 
     public function testMoveToLeftOfDoesNotChangeDepth()
     {
@@ -107,15 +107,15 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testMoveRightRaisesAnExceptionWhenNotPossible()
-  {
-      $node = $this->clusters('Child 2');
+    public function testMoveRightRaisesAnExceptionWhenNotPossible()
+    {
+        $node = $this->clusters('Child 2');
 
-      $node->moveRight();
-      $node->moveRight();
-  }
+        $node->moveRight();
+        $node->moveRight();
+    }
 
     public function testMoveRightDoesNotChangeDepth()
     {
@@ -155,12 +155,12 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testMoveToRightOfRaisesAnExceptionWhenNotPossible()
-  {
-      $this->clusters('Child 3')->moveToRightOf($this->clusters('Child 3')->getRightSibling());
-  }
+    public function testMoveToRightOfRaisesAnExceptionWhenNotPossible()
+    {
+        $this->clusters('Child 3')->moveToRightOf($this->clusters('Child 3')->getRightSibling());
+    }
 
     public function testMoveToRightOfDoesNotChangeDepth()
     {
@@ -472,54 +472,54 @@ class ClusterMovementTest extends ClusterTestCase
     }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testUnpersistedNodeCannotBeMoved()
-  {
-      $unpersisted = new Cluster(['name' => 'Unpersisted']);
+    public function testUnpersistedNodeCannotBeMoved()
+    {
+        $unpersisted = new Cluster(['name' => 'Unpersisted']);
 
-      $unpersisted->moveToRightOf($this->clusters('Root 1'));
-  }
+        $unpersisted->moveToRightOf($this->clusters('Root 1'));
+    }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testUnpersistedNodeCannotBeMadeChild()
-  {
-      $unpersisted = new Cluster(['name' => 'Unpersisted']);
+    public function testUnpersistedNodeCannotBeMadeChild()
+    {
+        $unpersisted = new Cluster(['name' => 'Unpersisted']);
 
-      $unpersisted->makeChildOf($this->clusters('Root 1'));
-  }
+        $unpersisted->makeChildOf($this->clusters('Root 1'));
+    }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testNodesCannotBeMovedToItself()
-  {
-      $node = $this->clusters('Child 1');
+    public function testNodesCannotBeMovedToItself()
+    {
+        $node = $this->clusters('Child 1');
 
-      $node->moveToRightOf($node);
-  }
+        $node->moveToRightOf($node);
+    }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testNodesCannotBeMadeChildOfThemselves()
-  {
-      $node = $this->clusters('Child 1');
+    public function testNodesCannotBeMadeChildOfThemselves()
+    {
+        $node = $this->clusters('Child 1');
 
-      $node->makeChildOf($node);
-  }
+        $node->makeChildOf($node);
+    }
 
   /**
-   * @expectedException Baum\MoveNotPossibleException
+   * @expectedException \Baum\MoveNotPossibleException
    */
-  public function testNodesCannotBeMovedToDescendantsOfThemselves()
-  {
-      $node = $this->clusters('Root 1');
+    public function testNodesCannotBeMovedToDescendantsOfThemselves()
+    {
+        $node = $this->clusters('Root 1');
 
-      $node->makeChildOf($this->clusters('Child 2.1'));
-  }
+        $node->makeChildOf($this->clusters('Child 2.1'));
+    }
 
     public function testDepthIsUpdatedWhenMadeChild()
     {
@@ -529,7 +529,7 @@ class ClusterMovementTest extends ClusterTestCase
         $d = Cluster::create(['name' => 'D']);
 
     // a > b > c > d
-    $b->makeChildOf($a);
+        $b->makeChildOf($a);
         $c->makeChildOf($b);
         $d->makeChildOf($c);
 
@@ -552,7 +552,7 @@ class ClusterMovementTest extends ClusterTestCase
         $d = Cluster::create(['name' => 'D']);
 
     // a > b > c > d
-    $b->makeChildOf($a);
+        $b->makeChildOf($a);
         $c->makeChildOf($b);
         $d->makeChildOf($c);
 

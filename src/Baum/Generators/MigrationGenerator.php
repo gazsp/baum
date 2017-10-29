@@ -12,19 +12,19 @@ class MigrationGenerator extends Generator
    *
    * @return string
    */
-  public function create($name, $path)
-  {
-      $path = $this->getPath($name, $path);
+    public function create($name, $path)
+    {
+        $path = $this->getPath($name, $path);
 
-      $stub = $this->getStub('migration');
+        $stub = $this->getStub('migration');
 
-      $this->files->put($path, $this->parseStub($stub, [
-      'table' => $this->tableize($name),
-      'class' => $this->getMigrationClassName($name),
-    ]));
+        $this->files->put($path, $this->parseStub($stub, [
+        'table' => $this->tableize($name),
+        'class' => $this->getMigrationClassName($name),
+        ]));
 
-      return $path;
-  }
+        return $path;
+    }
 
   /**
    * Get the migration name.
@@ -33,20 +33,20 @@ class MigrationGenerator extends Generator
    *
    * @return string
    */
-  protected function getMigrationName($name)
-  {
-      return 'create_'.$this->tableize($name).'_table';
-  }
+    protected function getMigrationName($name)
+    {
+        return 'create_'.$this->tableize($name).'_table';
+    }
 
   /**
    * Get the name for the migration class.
    *
    * @param string $name
    */
-  protected function getMigrationClassName($name)
-  {
-      return $this->classify($this->getMigrationName($name));
-  }
+    protected function getMigrationClassName($name)
+    {
+        return $this->classify($this->getMigrationName($name));
+    }
 
   /**
    * Get the full path name to the migration.
@@ -56,18 +56,18 @@ class MigrationGenerator extends Generator
    *
    * @return string
    */
-  protected function getPath($name, $path)
-  {
-      return $path.'/'.$this->getDatePrefix().'_'.$this->getMigrationName($name).'.php';
-  }
+    protected function getPath($name, $path)
+    {
+        return $path.'/'.$this->getDatePrefix().'_'.$this->getMigrationName($name).'.php';
+    }
 
   /**
    * Get the date prefix for the migration.
    *
    * @return int
    */
-  protected function getDatePrefix()
-  {
-      return date('Y_m_d_His');
-  }
+    protected function getDatePrefix()
+    {
+        return date('Y_m_d_His');
+    }
 }

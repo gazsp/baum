@@ -127,19 +127,19 @@ class NodeModelExtensionsTest extends PHPUnit_Framework_TestCase
   /**
    * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
    */
-  public function testReloadThrowsExceptionIfNodeCannotBeLocated()
-  {
-      $node = Category::create(['name' => 'Some node']);
-      $this->assertNotNull($node->getKey());
+    public function testReloadThrowsExceptionIfNodeCannotBeLocated()
+    {
+        $node = Category::create(['name' => 'Some node']);
+        $this->assertNotNull($node->getKey());
 
-      $node->delete();
-      $this->assertNull($this->categories('Some node'));
-      $this->assertFalse($node->exists);
+        $node->delete();
+        $this->assertNull($this->categories('Some node'));
+        $this->assertFalse($node->exists);
 
-    // Fake persisted state, reload & expect failure
-    $node->exists = true;
-      $node->reload();
-  }
+      // Fake persisted state, reload & expect failure
+        $node->exists = true;
+        $node->reload();
+    }
 
     public function testNewNestedSetQueryUsesInternalBuilder()
     {
