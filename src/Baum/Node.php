@@ -1427,4 +1427,21 @@ abstract class Node extends Model
 
         return [$node, $nesting];
     }
+
+    /**
+     * Perform any actions that are necessary after the model is saved.
+     *
+     * @param  array  $options
+     * @return void
+     */
+    protected function finishSave(array $options)
+    {
+        $this->fireModelEvent('saved', false);
+
+        if ($options['touch'] ?? true) {
+            $this->touchOwners();
+        }
+
+        $this->syncOriginal();
+    }
 }
