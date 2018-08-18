@@ -2,7 +2,6 @@
 
 namespace Baum\Providers;
 
-use Baum\Console\BaumCommand;
 use Baum\Console\InstallCommand;
 use Baum\Generators\ModelGenerator;
 use Baum\Generators\MigrationGenerator;
@@ -27,24 +26,11 @@ class BaumServiceProvider extends ServiceProvider
      */
     public function registerCommands()
     {
-        $this->registerBaumCommand();
         $this->registerInstallCommand();
 
         // Resolve the commands with Artisan by attaching the event listener to Artisan's
         // startup. This allows us to use the commands from our terminal.
-        $this->commands('command.baum', 'command.baum.install');
-    }
-
-    /**
-     * Register the 'baum' command.
-     *
-     * @return void
-     */
-    protected function registerBaumCommand()
-    {
-        $this->app->singleton('command.baum', function ($app) {
-            return new BaumCommand();
-        });
+        $this->commands('command.baum.install');
     }
 
     /**
@@ -69,6 +55,6 @@ class BaumServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['command.baum', 'command.baum.install'];
+        return ['command.baum.install'];
     }
 }
