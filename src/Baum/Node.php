@@ -480,7 +480,7 @@ abstract class Node extends Model
      */
     public static function rebuild()
     {
-        $builder = new SetBuilder(new static());
+        $builder = new SetBuilder(new static()->withoutGlobalScopes());
         $builder->rebuild();
     }
 
