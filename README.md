@@ -1,18 +1,14 @@
-# Baum <a href="https://travis-ci.org/gazsp/baum"><img src="https://travis-ci.org/gazsp/baum.svg?branch=master"></a> [![Coverage Status](https://coveralls.io/repos/gazsp/baum/badge.svg?branch=master&service=github)](https://coveralls.io/github/gazsp/baum?branch=master) [![StyleCI](https://styleci.io/repos/47506280/shield)](https://styleci.io/repos/47506280)
 
-## Forked from [etrepat/baum](https://github.com/etrepat/baum) - Continuing development and fixing failing unit tests for Laravel 5.x (Currently supports Laravel 5.2 - 5.4)
 
-### Version 2.0 supporting Laravel 5.5, traits, etc is *in progress*. Please check the [feature/2.0](https://github.com/gazsp/baum/tree/feature/2.0) branch for more info.
+### Version 2.0 supporting Laravel 5.8, traits, 
 
 **If you find a bug, please file an issue and submit a pull request with a failing unit test**
 
 Baum is an implementation of the [Nested Set](http://en.wikipedia.org/wiki/Nested_set_model)
 pattern for [Laravel 5's](http://laravel.com/) Eloquent ORM.
 
-For **Laravel 4.2.x compatibility**, check the [1.0.x branch](https://github.com/etrepat/baum/tree/1.0.x-stable) branch or use the latest [1.0.x tagged release](https://github.com/etrepat/baum/releases).
 
 ## Documentation
-
 * [About Nested Sets](#about)
 * [The theory behind, a TL;DR version](#theory)
 * [Installation](#installation)
@@ -102,7 +98,7 @@ ordinary trees are suddenly quite fast. Nifty, isn't it?
 Baum works with Laravel 5 onwards. You can add it to your `composer.json` file
 with:
 
-    "gazsp/baum": "~1.1"
+     "imajkumar/baum": "^1.1"
 
 Run `composer install` to install it.
 
